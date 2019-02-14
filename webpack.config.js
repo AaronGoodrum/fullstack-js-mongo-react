@@ -1,15 +1,18 @@
-module.exports ={
+module.exports = {
   entry: './src/index.js',
   output: {
-    path: __dirname + '/public',
+    path: __dirname+ '/public',
     filename: 'bundle.js'
   },
-  module:{
-    loaders:[
+  module: {
+    rules: [
       {
-        test: /\.js$/,
-        loader:'babel-loader'
+        test: /\.js?$/,
+        loader: 'babel-loader',
+        query: {
+          presets: ['es2015', 'react']
+        }
       }
     ]
   }
-};s
+};
