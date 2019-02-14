@@ -1,7 +1,14 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from 'react'
+import ReactDOM from 'react-dom'
 
+const App = () => {
+  return (
+    <h2 className="text-center">
+      Hello React Components with express and MongoDB
+    </h2>
+  )
+}
 ReactDOM.render(
-  React.createElement('h2', null, 'Hello React with express and MongoDB'),
+  <App headerMessage />,
   document.getElementById('root')
 )
