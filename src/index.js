@@ -1,10 +1,13 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import App from './components/App'
 
+import data from './testData.json'
+
+import App from './components/App'
+console.log(data)
 // Tree Index > App > Header
 
 ReactDOM.render(
-  <App />,
+  <App userData={data.USERS}/>,
   document.getElementById('root')
 )

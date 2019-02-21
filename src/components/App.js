@@ -3,11 +3,18 @@ import Header from './Header'
 
 // state-ful
 class App extends React.Component {
-  // constructor (props) {
-  //   super(props)
-  //   this.state = { pageHeader: 'Naming from Stateful Contests' }
-  // }
-  setState({ pageHeader: 'Naming from Stateful Contests' })
+  constructor (props) {
+    super(props)
+    this.state = { pageHeader: 'Naming from Stateful Contests' }
+  }
+  // setState = { pageHeader:"Test" };
+
+  // Component Life cycle hooks
+  componentDidMount () {
+  }
+
+  componentWillUnmount () {
+  }
 
   render () {
     return (
