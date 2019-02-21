@@ -1,5 +1,6 @@
 import React from 'react'
 import Header from './Header'
+import ContestPreview from './contestPreview';
 
 // state-ful
 class App extends React.Component {
@@ -21,7 +22,9 @@ class App extends React.Component {
       <div className="App">
         <Header message={this.state.pageHeader} />
         <div>
-          ...
+          {this.props.userData.map(userData =>
+            <ContestPreview {...userData}key={userData.id} />
+          )}
         </div>
       </div>
     )
