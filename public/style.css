@@ -1,0 +1,15 @@
+.ContestPreview {
+  margin: 1em;
+  border: 1px solid #ccc;
+}
+
+.ContestPreview .company-name {
+  border-bottom: 1px soild #ccc;
+  padding: .25em 0.5em;
+  font-weight: bold;
+  background-color: #eee;
+}
+
+.ContestPreview .user-name {
+  padding: 0.5em;
+}

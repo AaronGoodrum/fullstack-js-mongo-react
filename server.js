@@ -9,8 +9,9 @@ const server = express()
 server.use(sassMiddleware({
   src: path.join(__dirname, '/sass'),
   dest: path.join(__dirname, '/public'),
-  outputStyle: 'compressed',
-  prefix: '/prefix'
+  debug: true,
+  outputStyle: 'expanded',
+  prefix: '/styles'
 }))
 
 server.set('view engine', 'ejs')
