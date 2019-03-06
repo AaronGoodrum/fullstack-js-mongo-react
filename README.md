@@ -10,5 +10,8 @@
 
 ## express server
 
-  Running on "localhost:8080"
+  Running on "localhost:3030"
 
+## added axios for the ajax api calls to use json data
+
+  axios
