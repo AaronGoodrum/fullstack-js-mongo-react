@@ -3,16 +3,16 @@ import PropTypes from 'prop-types'
 
 class ContestPreview extends Component {
   handleClick = () => {
-    console.log(this.props.username)
+    console.log("username: " + this.props.username)
   }
   render() {
     return (
-      <div className="ContestPreview" onClick={this.handleClick}>
+      <div className="Link ContestPreview" onClick={this.handleClick}>
       <div className="company-name">
-        {this.props.company.name}
+       Company: {this.props.company.name}
       </div>
       <div className="user-name">
-        {this.props.username}
+       Username:  {this.props.username}
       </div>
     </div>
     )
