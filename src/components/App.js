@@ -1,6 +1,8 @@
 import React from 'react'
 import Header from './Header'
-import ContestPreview from './contestPreview'
+import ContestList from './contestList';
+import PropTypes from 'prop-types'
+
 
 // import data from '../testData'
 
@@ -29,14 +31,14 @@ class App extends React.Component {
     return (
       <div className="App">
         <Header message={this.state.pageHeader} />
-        <div>
-          {this.state.userData.map(userData =>
-            <ContestPreview {...userData}key={userData.id} />
-          )}
-        </div>
+        <ContestList userData={this.state.userData}/>
       </div>
     )
   }
+}
+
+App.protoTypes = {
+  initialUserData: PropTypes.array
 }
 
 export default App
