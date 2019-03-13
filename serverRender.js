@@ -1,24 +1,23 @@
 // fetch the data from api for server rendering
+// ReactDom server to Render from server
+import React from 'react'
+import ReactDOMServer from 'react-dom/server'
+
+import App from './src/components/App'
 
 import config from './config'
 import axios from 'axios'
 
+const serverRender = () =>
 // Make a request for a user with a given URL
 axios.get(`${config.serverUrl}/api/USERS`)
   .then(resp => {
-    console.log(resp.data)
-  })
-  .catch(error => {
-    // handle error
-    console.log(error)
+    return {
+    initialMarkup: ReactDOMServer.renderToString(
+    <App initialUserData={resp.data.USERS}/>
+    ),
+      initialData: resp.data
+    }
   })
 
-//   // Want to use async/await? Add the `async` keyword to your outer function/method.
-// async function getUser() {
-//   try {
-//     const response = await axios.get('${config.serverUrl}/api/USERS');
-//     console.log(response);
-//   } catch (error) {
-//     console.error(error);
-//   }
-// }
+  export default serverRender
