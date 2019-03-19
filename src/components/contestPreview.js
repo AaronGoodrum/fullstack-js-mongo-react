@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 class ContestPreview extends Component {
   handleClick = () => {
     console.log("username: " + this.props.username)
+    this.props.onClick(this.props.id)
   }
   render() {
     return (
@@ -20,8 +21,10 @@ class ContestPreview extends Component {
 }
 
 ContestPreview.protoTypes = {
+  id: PropTypes.number.isRequired,
   username: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired
+  name: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired
 }
 
 export default ContestPreview

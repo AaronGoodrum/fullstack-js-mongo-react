@@ -3,8 +3,9 @@ import Header from './Header'
 import ContestList from './contestList';
 import PropTypes from 'prop-types'
 
-
-// import data from '../testData'
+//html5 history entries
+const pushState = (obj, url ) => 
+  window.history.pushState(obj, '', url);
 
 // state-ful
 class App extends React.Component {
@@ -27,11 +28,22 @@ class App extends React.Component {
     // clean listeners
   }
 
+  fetchUsers = (userId) => {
+    console.log(userId),
+    
+    pushState(
+      { currentUserId: userId},
+      `/USERS/${userId}`
+    )
+  }
+
   render () {
     return (
       <div className="App">
         <Header message={this.state.pageHeader} />
-        <ContestList userData={this.state.userData}/>
+        <ContestList
+          onUserClick={this.fetchUsers}
+          userData={this.state.userData}/>
       </div>
     )
   }
