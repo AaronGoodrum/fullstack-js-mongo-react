@@ -35,6 +35,7 @@ class App extends React.Component {
       { currentUserId: userId},
       `/USERS/${userId}`
     )
+    // Lookup the user
   }
 
   render () {
