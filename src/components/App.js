@@ -1,77 +1,66 @@
-import React from 'react'
-import Header from './Header'
-import ContestList from './contestList';
-import PropTypes from 'prop-types'
-import Contest from './Contest'
-import * as api from '../api'
+import React from 'react';
+import PropTypes from 'prop-types';
+import Header from './Header';
+import ContestList from './ContestList';
+import Contest from './Contest';
+import * as api from '../api';
 
-
-//html5 history entries
-const pushState = (obj, url ) => 
+const pushState = (obj, url) =>
   window.history.pushState(obj, '', url);
 
-// state-ful
 class App extends React.Component {
-  constructor (props) {
-    super(props)
-    this.state = {
-      pageHeader: 'Naming from Stateful Contests',
-      userData: this.props.initialUserData
-    }
-  }
-
-  // Component Life cycle hooks
-  // will need ajax for data using axios
-  // will need return, and catch for the ajax call
-  componentDidMount () {
+  static propTypes = {
+    initialData: PropTypes.object.isRequired
+  };
+  state = this.props.initialData;
+  componentDidMount() {
 
   }
-
-  componentWillUnmount () {
-    // clean listeners
+  componentWillUnmount() {
+    // clean timers, listeners
   }
-
-  fetchUsers = (userId) => {
-    console.log(userId),
-    
+  fetchContest = (contestId) => {
     pushState(
-      { currentUserId: userId},
-      `/USERS/${userId}`
-    )
-
-    api.fetchContest(userId).then(userData => {
+      { currentContestId: contestId },
+      `/contest/${contestId}`
+    );
+    api.fetchContest(contestId).then(contest => {
       this.setState({
-        pageHeader:userData.username,
-        currentUserId: userData.id,
+        currentContestId: contest.id,
         contests: {
-          ...this.state.USERS,
-          [userData.id]: userData
+          ...this.state.cotests,
+          [contest.id]: contest
         }
-      })
-    })
+      });
+    });
+  };
+  currentContest() {
+    return this.state.contests[this.state.currentContestId];
   }
-  currentContent(){
-    if (this.state.currentUserId) {
-      return <Contest {...this.state.userData[this.state.currentUserId]} />
+  pageHeader() {
+    if (this.state.currentContestId) {
+      return this.currentContest().contestName;
+    }
+
+    return 'Naming Contests';
+  }
+  currentContent() {
+    if (this.state.currentContestId) {
+      return <Contest {...this.currentContest()} />;
     }
 
     return <ContestList
-    onUserClick={this.fetchUsers}
-    userData={this.state.userData}/>
+            onContestClick={this.fetchContest}
+            contests={this.state.contests} />;
   }
-
-  render () {
+  render() {
     return (
       <div className="App">
-        <Header message={this.state.pageHeader} />
+        <Header message={this.pageHeader()} />
         {this.currentContent()}
       </div>
-    )
+    );
   }
 }
 
-App.protoTypes = {
-  initialUserData: PropTypes.array
-}
-
-export default App
+export default App;

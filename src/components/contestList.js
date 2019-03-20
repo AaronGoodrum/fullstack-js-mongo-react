@@ -1,21 +1,21 @@
-import React from 'react'
-import ContestPreview from './contestPreview'
-import PropTypes from 'prop-types'
+import React from 'react';
+import PropTypes from 'prop-types';
+import ContestPreview from './ContestPreview';
 
-const ContestList = ({ userData, onUserClick }) => (
+const ContestList = ({ contests, onContestClick }) => (
   <div className="ContestList">
-  {Object.keys(userData).map(userId =>
-    <ContestPreview
-      key={userId} 
-      onClick={onUserClick}
-      {...userData[userId]} />
-  )}
-</div>
-)
+    {Object.keys(contests).map(contestId =>
+      <ContestPreview
+        key={contestId}
+        onClick={onContestClick}
+        {...contests[contestId]} />
+    )}
+  </div>
+);
 
-ContestList.protoTypes = {
-  userData: PropTypes.object.isRequired,
-  onUserClick: PropTypes.func.isRequired
-}
+ContestList.propTypes = {
+  contests: PropTypes.object,
+  onContestClick: PropTypes.func.isRequired,
+};
 
-export default ContestList
+export default ContestList;

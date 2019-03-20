@@ -1,11 +1,9 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
+import React from 'react';
+import ReactDOM from 'react-dom';
 
-import App from './components/App'
-// Tree Index > App > Header
+import App from './components/App';
 
-  ReactDOM.hydrate(
-    <App initialUserData={window.initialData.USERS}/>,
-    document.getElementById('root')
-  )
-        
+ReactDOM.render(
+  <App initialData={window.initialData} />,
+  document.getElementById('root')
+);
