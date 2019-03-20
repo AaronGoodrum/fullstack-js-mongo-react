@@ -3,6 +3,8 @@ import Header from './Header'
 import ContestList from './contestList';
 import PropTypes from 'prop-types'
 import Contest from './Contest'
+import * as api from '../api'
+
 
 //html5 history entries
 const pushState = (obj, url ) => 
@@ -36,10 +38,16 @@ class App extends React.Component {
       { currentUserId: userId},
       `/USERS/${userId}`
     )
-    // Lookup the user the.state.users[userId]
-    this.setState({
-      pageHeader:this.state.userData[userId].username,
-      currentUserId: userId
+
+    api.fetchContest(userId).then(userData => {
+      this.setState({
+        pageHeader:userData.username,
+        currentUserId: userData.id,
+        contests: {
+          ...this.state.USERS,
+          [userData.id]: userData
+        }
+      })
     })
   }
   currentContent(){

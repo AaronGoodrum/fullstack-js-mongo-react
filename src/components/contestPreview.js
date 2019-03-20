@@ -20,7 +20,7 @@ class ContestPreview extends Component {
   }
 }
 
-ContestPreview.protoTypes = {
+ContestPreview.propTypes = {
   id: PropTypes.number.isRequired,
   username: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,

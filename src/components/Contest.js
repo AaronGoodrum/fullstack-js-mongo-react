@@ -10,6 +10,10 @@ class Contest extends Component {
       </div>
     )
     }
+
   }
+    Contest.propTypes = {
+      id: PropTypes.number.isRequired
+    }
 
 export default Contest;

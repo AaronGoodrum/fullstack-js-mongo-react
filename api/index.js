@@ -12,4 +12,11 @@ router.get('/USERS', (req, res) => {
   res.send({ USERS: USERS });
 });
 
+router.get('/USERS/:userId', (req, res) => {
+  let USER = USERS[req.params.userId]
+  USER.catchPhrase = 'Lorem Testing'
+
+  res.send({ USER });
+});
+
 export default router;
