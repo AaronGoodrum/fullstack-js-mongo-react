@@ -10,10 +10,15 @@
   background-color: #eee;
 }
 
-.ContestPreview .user-name {
+.ContestPreview .contest-name {
   padding: 0.5em;
 }
 
-.Link {
+.link {
   cursor: pointer;
+}
+
+.home-link {
+  margin-top: 1em;
+  color: blue;
 }

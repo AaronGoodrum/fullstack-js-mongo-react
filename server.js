@@ -8,8 +8,10 @@ import express from 'express';
 const server = express();
 
 server.use(sassMiddleware({
-  src: path.join(__dirname, 'sass'),
-  dest: path.join(__dirname, 'public')
+  src: path.join(__dirname, '/sass'),
+  dest: path.join(__dirname, '/public'),
+  debug: true,
+  outputStyle: 'expanded'
 }));
 
 server.set('view engine', 'ejs');
